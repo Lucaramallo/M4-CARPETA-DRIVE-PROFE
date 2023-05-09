@@ -1,0 +1,20 @@
+--> Git Clase 2
+https://github.com/soyHenry/DS-M4/tree/main/Clase%2002
+
+--> Ejercicio Mongo
+
+sudo docker run -d --name test-mongo mongo:4.0.4
+
+sudo docker ps
+
+sudo docker exec -it test-mongo bash
+
+mongo <- ingreso a la base
+--> dentro de mongo
+show dbs
+
+use prueba
+
+db.prueba.insert({"color": "azul"})
+
+db.prueba.find()

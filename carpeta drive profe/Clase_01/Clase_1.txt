@@ -1,0 +1,65 @@
+Links
+
+--> Clase 1
+
+
+--> Git Clone Clase 1
+https://github.com/soyHenry/DS-M4-Cluster_Hadoop
+
+--> Drive Clase_1
+https://drive.google.com/drive/u/0/folders/1mO97CFN4JqAtvlZr998A7kjk0F3qkpqN
+
+--> Virtual Box
+https://www.virtualbox.org/wiki/Downloads
+
+--> Putty
+https://www.putty.org/
+
+Comandos
+
+hostname -I 
+
+--> corremos nuestro primer container
+sudo docker run hello-world
+
+
+-- > git del repositorio de Hadoop
+git clone https://github.com/soyHenry/DS-M4-Cluster_Hadoop
+
+-- > Crear red para el cluster de hadoop
+sudo docker network create --driver=bridge hadoop
+
+
+--> Inicializar el cluster
+cd DS-M4-Cluster_Hadoop
+
+sudo ./start-container.sh
+
+- chmod +x ./start-container.sh -- y luego ejecutar: sudo ./start-container.sh
+
+--> Iniciar hadoop
+./start-hadoop.sh
+
+--> Un archivo txt de un libro
+wget https://raw.githubusercontent.com/uracilo/testdata/master/odisea.txt
+
+--> Crear un directorio
+mkdir input
+
+--> Crear un archivo tipo tar.gz
+tar -czvf input/odisea.tar.gz odisea.txt
+
+--> Revisar los tamaños de nuestros archivos
+ls -flarts input
+
+--> Crear y mover directorio input al HDFS de HADOOP
+hdfs dfs -mkdir -p test
+hdfs dfs -put input
+
+--> Revisar nuestro input directorio en HADOOP
+hdfs dfs –ls input
+
+--> Leer las primeras lineas de nuestro archivo en HADOOP
+hdfs dfs -cat  input/odisea.tar.gz | zcat | tail -n 20
+
+
